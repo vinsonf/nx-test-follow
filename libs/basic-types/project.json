@@ -1,0 +1,15 @@
+{
+  "root": "libs/basic-types",
+  "sourceRoot": "libs/basic-types/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/basic-types/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}

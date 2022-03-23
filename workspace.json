@@ -1,4 +1,9 @@
 {
   "version": 2,
-  "projects": {}
+  "projects": {
+    "basic-angular": "apps/basic-angular",
+    "basic-angular-e2e": "apps/basic-angular-e2e",
+    "basic-express": "apps/basic-express",
+    "basic-types": "libs/basic-types"
+  }
 }

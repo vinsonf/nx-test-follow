@@ -1,0 +1,94 @@
+{
+  "projectType": "application",
+  "root": "apps/basic-angular",
+  "sourceRoot": "apps/basic-angular/src",
+  "prefix": "nx-test-follow",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/basic-angular",
+        "index": "apps/basic-angular/src/index.html",
+        "main": "apps/basic-angular/src/main.ts",
+        "polyfills": "apps/basic-angular/src/polyfills.ts",
+        "tsConfig": "apps/basic-angular/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/basic-angular/src/favicon.ico",
+          "apps/basic-angular/src/assets"
+        ],
+        "styles": ["apps/basic-angular/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/basic-angular/src/environments/environment.ts",
+              "with": "apps/basic-angular/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "basic-angular:build:production"
+        },
+        "development": {
+          "browserTarget": "basic-angular:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "basic-angular:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/basic-angular/src/**/*.ts",
+          "apps/basic-angular/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/basic-angular"],
+      "options": {
+        "jestConfig": "apps/basic-angular/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
