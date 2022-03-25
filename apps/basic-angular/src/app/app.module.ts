@@ -10,11 +10,12 @@ import { RegisterSocketComponent } from './components/register-socket/register-s
 import { RegisterRestComponent } from './components/register-rest/register-rest.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3333', options: {} };
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent, RegisterSocketComponent, RegisterRestComponent, RegisterComponent],
+  declarations: [AppComponent, NxWelcomeComponent, RegisterSocketComponent, RegisterRestComponent, RegisterComponent, UploadFileComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
