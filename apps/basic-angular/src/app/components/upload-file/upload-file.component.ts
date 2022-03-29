@@ -14,11 +14,9 @@ export class UploadFileComponent  {
   }
 
   uploadFile(event: Event) {
-    console.log('uploadFile', event);
     const target = event.target as HTMLInputElement;
     const files = target.files as FileList;
     this.formData.append('file', files[0]);
-    console.log('uploadFile', this.formData);
     this.api.post('/upload', this.formData).subscribe();
   }
 

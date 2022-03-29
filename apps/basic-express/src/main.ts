@@ -79,8 +79,31 @@ app.post('/register', (req, res) =>{
   res.json({message: 'register'});
 });
 app.post('/upload', upload.single('file'), (req, res) => {
-  console.log('upload');
   res.json({message: 'uploaded'});
+});
+
+app.get('/files', (req, res) => {
+  gfs.find().toArray((err, files) => {
+    if (err) {
+      return res.status(400).json({
+        err: 'No files exist'
+      });
+    }
+    return res.json(files);
+  });
+});
+
+app.get('/file/:filename', (req, res) => {
+  gfs.find({
+    filename: req.params.filename
+  }).toArray((err, files) => {
+    if (!files || files.length === 0) {
+      return res.status(404).json({
+        err: 'No files exist'
+      });
+    }
+    return gfs.openDownloadStreamByName(req.params.filename).pipe(res);
+  })
 })
 
 const port = process.env.port || 3333;

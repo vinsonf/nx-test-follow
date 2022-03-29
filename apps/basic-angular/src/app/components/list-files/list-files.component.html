@@ -1,0 +1,16 @@
+<p>list-files works!</p>
+
+<div *ngIf="files$ | async as files">
+
+  <div *ngFor="let file of files">
+    <hr>
+    <p>{{ file._id }}</p>
+    <p>{{ file.filename }}</p>
+    {{ baseUrl}}
+
+    <object [data]="baseUrl + file.filename" type="image/svg+xml"></object>
+    img: <img [src]="baseUrl + '/file/' + file.filename" alt="" width="600">
+
+    <hr>
+  </div>
+</div>
